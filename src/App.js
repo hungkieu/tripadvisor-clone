@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from '@material-ui/core/styles';
+
+import Header from './components/Header';
+import Hero from './components/Hero';
+import QuickLinks from './components/QuickLinks';
+import Social from './components/Social';
+
+import AppContext, { defaultValue } from './context';
+import theme from './theme';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext.Provider value={defaultValue}>
+      <ThemeProvider theme={theme}>
+        <div className="App">
+          <Header />
+          <Hero />
+          <QuickLinks />
+          <Social />
+        </div>
+      </ThemeProvider>
+    </AppContext.Provider>
   );
 }
 
